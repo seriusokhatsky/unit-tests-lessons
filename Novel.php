@@ -11,6 +11,10 @@ class Novel extends Book {
     	return $this->category;
     }
 
+    public function numberOfPages() {
+    	return $this->allPages - self::COVERPAGES;
+    }
+
 }
 
 

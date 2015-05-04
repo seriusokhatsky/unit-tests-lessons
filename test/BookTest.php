@@ -1,6 +1,5 @@
 <?php 
 
-require_once __DIR__.'/../Book.php';
 
 class BookTest extends PHPUnit_Framework_TestCase {
 
@@ -34,14 +33,21 @@ class BookTest extends PHPUnit_Framework_TestCase {
 		$title = 'New Title';
 		$author = 'Really Cool Guy';
 		
-		$book = new Book($title, $author);
+		$book = new Novel($title, $author);
 
 		$this->assertEquals($title, $book->getTitle());
 		$this->assertEquals($author, $book->getAuthor());
 	}
 
+	function testItCanShowNumberOfPages() {
+		$book = new Novel();
+		$book->setAllPages(100);
+		$this->assertEquals(98, $book->numberOfPages());
+
+	}
+
 	function createBook() {
-		return new Book();
+		return new Novel();
 	}
 }
 

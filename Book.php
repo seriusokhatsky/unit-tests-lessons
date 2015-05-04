@@ -1,9 +1,12 @@
 <?php 
 
-class Book {
+abstract class Book {
+
+	const COVERPAGES = 2;
 
 	public $title = '';
 	public $author = '';
+	protected $allPages;
 
 	function __construct($title = 'N/A', $author = 'N/A') {
 		$this->setTitle($title);
@@ -25,6 +28,24 @@ class Book {
 	public function getTitle() {
 		return $this->title;
 	}
+
+	abstract public function numberOfPages();
+
+    /**
+     * Gets the value of allPages.
+     *
+     * @return mixed
+     */
+    public function getAllPages()
+    {
+        return $this->allPages;
+    }
+
+    public function setAllPages($pages)
+    {
+        $this->allPages = $pages;
+        return $this;
+    }
 }
 
  ?>

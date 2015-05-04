@@ -4,7 +4,7 @@ class Library {
 
 	private $books = array();
 
-	function add($book) {
+	function add(Book $book) {
 		$this->books[] = $book;
 	}
 
