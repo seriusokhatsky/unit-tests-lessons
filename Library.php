@@ -3,9 +3,16 @@
 class Library {
 
 	private $books = array();
+	public static $libraryPath = '/tmp/library.txt';
+	private $persistence;
+
+	function __construct(PersistenceGateway $persistence = null) {
+		$this->persistence = $persistence ? : new SerializedPersister();
+	}
 
 	function add(Book $book) {
 		$this->books[] = $book;
+		$this->save();
 	}
 
 	function findAll() {
@@ -24,6 +31,15 @@ class Library {
 				return $book->getTitle() != $title;
 			})
 		);
+		$this->save();
+	}
+
+	function save() {
+		$this->persistence->save($this->books, self::$libraryPath);
+	}
+
+	function loadFromFile() {
+		$this->books = $this->persistence->loadFromFile(self::$libraryPath);
 	}
 }
 

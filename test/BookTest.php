@@ -8,13 +8,6 @@ class BookTest extends PHPUnit_Framework_TestCase {
 	function testDifferentBooksCanHaveDiffTitles() {
 		$book1 = $this->createBook();
 		$title1 = 'The 50 shades of grey';
-		$book1->setTitle($title1);
-		$this->assertEquals($title1, $book1->getTitle());
-
-		$book2 = $this->createBook();
-		$title2 = 'The 99 shades of red';
-		$book2->setTitle($title2);
-		$this->assertEquals($title2, $book2->getTitle());
 	}
 
 	function testDifferentBooksCanHaveDifferentAuthors() {
